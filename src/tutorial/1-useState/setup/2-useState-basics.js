@@ -1,5 +1,13 @@
 import React, { useState } from "react";
 
+/**
+ * GENERAL RULES FOR HOOKS:
+ * 1. use
+ * 2. component that uses hooks should be named in Uppercase
+ * 3. must be in the function/component body
+ * 4. cannot call conditionaly
+ */
+
 const UseStateBasics = () => {
   const [text, setText] = useState("Random Text");
 
