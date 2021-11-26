@@ -17,18 +17,24 @@ const UseEffectFetchData = () => {
     getUsers(); // Note that we have used a seperate async function because we cannot use that here in useEffect, useEffect always returns a clean up function, But async function always returns a promise
   }, []);
   return (
-    <main className="container">
-      {users &&
-        users.map((user) => {
-          const { id, avatar_url, login } = user;
-          return (
-            <div key={id}>
-              <img src={avatar_url} alt={`github user`} />
-              <p>{login}</p>
-            </div>
-          );
-        })}
-    </main>
+    <>
+      <h3>github users</h3>
+      <ul className="users">
+        {users &&
+          users.map((user) => {
+            const { id, avatar_url, login, html_url } = user;
+            return (
+              <li key={id}>
+                <img src={avatar_url} alt={login} />
+                <div>
+                  <p>{login}</p>
+                  <a href={html_url}>profile</a>
+                </div>
+              </li>
+            );
+          })}
+      </ul>
+    </>
   );
 };
 
