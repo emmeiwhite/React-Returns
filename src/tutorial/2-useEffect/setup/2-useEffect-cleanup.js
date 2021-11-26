@@ -4,14 +4,28 @@ import React, { useState, useEffect } from "react";
 // second argument
 
 const UseEffectCleanup = () => {
-  const [value, setValue] = useState(0);
+  const [width, setWidth] = useState(window.innerWidth);
 
+  const handleResize = () => {
+    setWidth(window.innerWidth);
+  };
+
+  // Our useEffect will run every time the component re-renders but also the cleanup function will run with it in this scenario
+  useEffect(() => {
+    console.log("useEffect");
+    window.addEventListener("resize", handleResize);
+
+    // For clean up
+    return () => {
+      console.log("I am a clean up function");
+      window.removeEventListener("resize", handleResize);
+    };
+  });
+
+  console.log("render");
   return (
     <main>
-      <h2>{value}</h2>
-      <button className="btn" onClick={() => setValue(value + 1)}>
-        Increase Value
-      </button>
+      <h2>{width} px</h2>
     </main>
   );
 };
