@@ -10,7 +10,16 @@ const UseEffectBasics = () => {
   useEffect(() => {
     console.log("useEffect Hook Invoked !!!");
     document.title = `updated title ${value}`; // performing site effect
-  });
+  }, [value]); // Here we are passing a dependency list in the form of an array
+
+  // useEffect different setups... Second Parameter
+
+  // When we are using second argument as array this will run only once at the start
+  useEffect(() => {
+    // This is same as componentDidMount()
+    console.log("This will run the first time only");
+  }, []);
+
   return (
     <main>
       <h2>{value}</h2>
