@@ -13,6 +13,8 @@ const ControlledInputs = () => {
 
     if (userName && userEmail) {
       console.log("Form Submit");
+      setUserName("");
+      setUserEmail("");
     } else {
       alert("Fill form fields to post the form");
     }
