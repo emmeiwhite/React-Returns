@@ -3,8 +3,9 @@ import React, { useState } from "react";
 // ternary operator
 
 const ShortCircuit = () => {
-  // const firstValue = text || 'hello world';
-  // const secondValue = text && 'hello world';
+  const [text, setText] = useState("");
+  const firstValue = text || "hello world";
+  const secondValue = text && "hello world";
 
   return (
     <main>
@@ -14,6 +15,13 @@ const ShortCircuit = () => {
        Because it doesno't return any value. Instead 
        we make use of the short-circuit operator and ternairy operators when required
        */}
+
+      <h2>{firstValue}</h2>
+      <h2>{secondValue}</h2>
+
+      <h2>{firstValue}</h2>
+      {text || "I am the text"}
+      {text && <h3>Text is not present</h3>}
     </main>
   );
 };
