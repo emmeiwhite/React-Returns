@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 
 const ShowHide = () => {
+  const [error, isError] = useState(false);
   return (
     <div>
-      <Item />
+      <button onClick={() => isError(!error)} className="btn">
+        Toggle error;
+      </button>
+      {!error && <Item />}
     </div>
   );
 };
@@ -17,6 +21,11 @@ const Item = () => {
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
+
+    // clean up function
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
