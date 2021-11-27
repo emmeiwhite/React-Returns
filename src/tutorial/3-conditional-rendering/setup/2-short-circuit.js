@@ -4,8 +4,10 @@ import React, { useState } from "react";
 
 const ShortCircuit = () => {
   const [text, setText] = useState("truth stands out clear");
-  const firstValue = text || "hello world";
-  const secondValue = text && "hello world";
+  // const firstValue = text || "hello world";
+  // const secondValue = text && "hello world";
+
+  const [error, isError] = useState(false);
 
   return (
     <main>
@@ -22,6 +24,15 @@ const ShortCircuit = () => {
       {/* <h2>{firstValue}</h2> */}
       {text || "I am the text"}
       {text && <h3>Text is not present</h3>}
+
+      <div>
+        <button className="btn" onClick={() => isError(!error)}>
+          toggle an error ^_^
+        </button>
+        <h2>Ternairy Operator</h2>
+        {error && <h3>Error...</h3>}
+        {error ? <p> There is something wrong</p> : <p>All is well</p>}
+      </div>
     </main>
   );
 };
